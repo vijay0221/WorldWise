@@ -3,10 +3,14 @@ import styles from './CountriesList.module.css'
 import Spinner from '../components/Spinner'
 import Message from '../components/Message';
 import CountryItem from '../components/CountryItem'
+import { useCities } from '../contexts/CitiesContext';
+
+function CountriesList() {
+  const {isLoading,cities}=useCities();
 
 
-function CountriesList({isLoading, cities}) {
   if(isLoading) return <Spinner/>
+
   if(!cities.length) return <Message message="Add your First city by clicking on a city"/>
 
 
