@@ -6,21 +6,26 @@ import styles from './Map.module.css'
 import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import { useEffect, useState } from 'react';
 import { useCities } from '../contexts/CitiesContext';
-import { useGeolocation } from '../hooks/useGeoloacation';
 import Button from '../components/Button'
 import { useUrlPostion } from '../hooks/useUrlPosition';
+
+import { useGeolocation } from '../hooks/useGeoloacation';
+
+
 
 
 function Map() {
   const {cities}=useCities();
   const [mapPosition,setMapPosition]=useState([40,0])
   
-  const {isLoading:isLoadingPosition,
+  const {
+    isLoading:isLoadingPosition,
     position:geolocationPosition,
-    getPosition
-  }= useGeolocation()
+    getPosition,
+  }= useGeolocation();
   
- const [mapLat,mapLng]=useUrlPostion()
+ const [mapLat,mapLng]=useUrlPostion();
+
  useEffect(function(){
   if(mapLat && mapLng) setMapPosition([mapLat,mapLng])
  },[mapLat,mapLng])
@@ -35,31 +40,30 @@ useEffect(function(){
   
     <div className={styles.mapContainer} >
      
-    
+    {/* {console.log(geolocationPosition)} */}
 
-  {! geolocationPosition && <Button type="position" onClick={getPosition}>
+  {! geolocationPosition && (<Button type="position" onClick={getPosition}>
         {isLoadingPosition ? "Loading..." : "Use your position"}
-      </Button>}
+      </Button>)}
      
 
-     <MapContainer
-      
-      // center={mapPosition} 
-      center={mapPosition}
-      zoom={6} 
-      scrollWheelZoom={true} 
-      className={styles.mapContainer}>
-      <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url='https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'/>
-    { cities.map ((city)=> <Marker position={[city.position.lat,city.position.lng]} key={city.id}>
-        <Popup>
-         <span>{city.emoji}</span>
-         <span>{city.cityName}</span>
-        </Popup>
-      </Marker>)}
+    <MapContainer
+    // center={mapPosition} 
+    center={mapPosition}
+    zoom={6} 
+    scrollWheelZoom={true} 
+    className={styles.mapContainer}>
+    <TileLayer attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' url='https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'/>
+     { cities.map ((city)=> <Marker position={[city.position.lat,city.position.lng]} key={city.id}>
+      <Popup>
+        <span>{city.emoji}</span>
+        <span>{city.cityName}</span>
+      </Popup>
+    </Marker>)}
 
-      <ChangeCenter position={mapPosition}/>
-      <DetectClick/>
-     </MapContainer>
+    <ChangeCenter position={mapPosition}/>
+    <DetectClick/>
+    </MapContainer>
      
     </div>
 

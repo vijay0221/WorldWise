@@ -1,18 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
       "cityName": "Madrid",
       "country": "Spain",
       "emoji": "🇪🇸",
@@ -40,13 +28,37 @@
       "cityName": "Hyderabad",
       "country": "India",
       "emoji": "🇮🇳",
-      "date": "2023-09-20T12:22:50.481Z",
-      "notes": "sfdsf",
+      "date": "2023-09-21T12:10:16.013Z",
+      "notes": "hey beautiful place to visit\n",
       "position": {
-        "Lat": "17.163964449572575",
-        "Lng": "78.66210937500001"
+        "lat": "17.358195521731854",
+        "lng": "78.46504211425781"
       },
-      "id": 98443198
+      "id": 98443200
+    },
+    {
+      "cityName": "Lumbreras",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2023-09-22T08:53:49.555Z",
+      "notes": "hey",
+      "position": {
+        "lat": "42.0189711111093",
+        "lng": "-2.5744168291177782"
+      },
+      "id": 98443201
+    },
+    {
+      "cityName": "La Buxerette",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2023-09-23T07:25:47.823Z",
+      "notes": "nice place to visit\n",
+      "position": {
+        "lat": "46.49934682561596",
+        "lng": "1.8017578125000002"
+      },
+      "id": 98443202
     }
   ]
 }
